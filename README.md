@@ -59,10 +59,11 @@ ws://110.93.216.28:3005
 You can add user to the chat server using the following channel
     
 ```
-io.emit("addUser", user); // here user is an object with all attributes of the user specially id should be sent as _id
+io.emit("addUser", user); // here user is an object with all attributes of the user specially id should be sent as _id and role as role: "user"
 
 // {
 //    _id: "id of user",
+//    role: "user",
 //    other fields
 //}
 ```
@@ -157,7 +158,7 @@ socket.current.on("agentLeft", {
 You can add agent to the chat server using the following channel
 
 ```
-io.emit("addAgent", (user) => { // here user must be an object and must contain _id as id of agent and other related fields like name etc
+io.emit("addAgent", (user) => { // here user must be an object and must contain _id as id of agent and role as role: "agent" and other related fields like name etc
 
 ```
 
