@@ -119,11 +119,16 @@ console.log(data)
 You can pass some options while being in the call like mute hold etc
 Specifically you can start video call too for video call you will have to pass these key value pairs in options
 ```
+io.emit("callOptions", ({ senderId, receiverId, option, role, channelName, uid }) => { // options here is an object where you can pass any key value pairs
+```
+```
+// option object
 {
     type: "video",
     action: true //or false if closing the video
 }
 ```
+
 
 You can receive callOptions by using the following code:
         
@@ -132,10 +137,6 @@ socket.current.on("callOptions", (data) => {
 console.log(data)
 });
 
-```
-
-```
-io.emit("callOptions", ({ senderId, receiverId, option, role, channelName, uid }) => { // options here is an object where you can pass any key value pairs
 ```
 
 You can end call with 
