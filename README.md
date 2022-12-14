@@ -99,6 +99,23 @@ You can initiate a call with agent
 io.emit("startCall", ({ senderId, receiverId, type, role, channelName, uid }) => { // here role should be "user" if initiated by user else "agent", type should be "audio"
 ```
 
+You can receive call by using the following code:
+        
+```
+socket.current.on("callStarted", (data) => {
+console.log(data)
+});
+
+```
+You can receive error by using the following code:
+        
+```
+socket.current.on("error", (data) => {
+console.log(data)
+});
+
+```
+
 You can pass some options while being in the call like mute hold etc
 Specifically you can start video call too for video call you will have to pass these key value pairs in options
 ```
@@ -106,6 +123,15 @@ Specifically you can start video call too for video call you will have to pass t
     type: "video",
     action: true //or false if closing the video
 }
+```
+
+You can receive callOptions by using the following code:
+        
+```
+socket.current.on("callOptions", (data) => {
+console.log(data)
+});
+
 ```
 
 ```
@@ -118,10 +144,28 @@ You can end call with
 io.emit("endCall", ({ senderId, receiverId, type, role, channelName, uid }) => {
 ```
 
+You can receive callEnded by using the following code:
+        
+```
+socket.current.on("callEnded", (data) => {
+console.log(data)
+});
+
+```
+
 Both User and agent can decline call too with
 
 ```
 io.emit("declineCall", ({ senderId, receiverId, role, channelName, uid }) => {
+```
+
+You can receive declinedCall by using the following code:
+        
+```
+socket.current.on("declinedCall", (data) => {
+console.log(data)
+});
+
 ```
 
 User can exit the socket with
